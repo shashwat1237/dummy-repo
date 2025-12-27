@@ -147,7 +147,7 @@ Aegis-platform/
 ### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/](https://github.com/)<your-username>/Aegis-platform.git
+git clone https://github.com/DeveshMudaliar1/Aegis-platform.git
 cd Aegis-platform
 
 ```
