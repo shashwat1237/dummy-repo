@@ -1,6 +1,4 @@
-Here is the corrected and fully formatted `README.md` file. I have organized the messier sections (like the Tech Stack and Architecture) into proper tables and diagrams, and fixed the code blocks.
 
-```markdown
 # 🛡️ Project Aegis
 ### AI Data Resilience & Schema Drift Defense Platform
 
@@ -204,4 +202,4 @@ Distributed under the **MIT License**.
 
 ```
 
-```
+
