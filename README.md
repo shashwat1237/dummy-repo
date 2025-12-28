@@ -107,37 +107,56 @@ graph TD
 ## 📁 Project Structure
 
 ```text
-Aegis-platform/
+aegis-platform/
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── LineageGraph.tsx    # Data lineage visualization
-│   │   │   ├── SchemaInspector.tsx # Column-level inspection
-│   │   │   ├── RiskPanel.tsx       # Data VIX display
-│   │   │   └── CopilotDrawer.tsx   # AI remediation UI
-│   │   └── data/                   # Mock / demo datasets
+├── deploy_aegis.sh         # Deployment script
+├── docker-compose.yml      # Local composition config
+├── test_aegis.sh           # Testing script
+├── repair_stuff.py         # Utility script
+├── f1.py                   # Utility script
+├── schema_diagram.png      # Architecture visual
+├── README.md
 │
 ├── backend/
-│   ├── api/
-│   │   ├── lineage.py              # Lineage APIs
-│   │   ├── chaos.py                # Schema drift simulation
-│   │   ├── risk.py                 # Blast radius & VIX logic
-│   │   └── heal.py                 # AI remediation endpoints
-│   ├── services/
-│   │   ├── blast_radius.py         # Graph traversal logic
-│   │   ├── data_vix.py             # Risk scoring engine
-│   │   └── remediation.py          # SQL patch generation
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── app/
+│       ├── main.py             # App entry point
+│       ├── config.py           # Configuration loading
+│       ├── schemas.py          # Pydantic models
+│       ├── routers/
+│       │   ├── chaos.py        # Chaos engineering routes
+│       │   └── remediate.py    # Remediation routes
+│       └── services/
+│           ├── ai_agent.py     # AI Copilot logic
+│           ├── bigquery.py     # BQ interaction service
+│           └── vix_calc.py     # Data VIX calculation logic
 │
-├── Screenshots/                    # Demo screenshots
-│   ├── before-chaos.png
-│   ├── after-chaos.png
-│   └── after-heal.png
-│
-├── docker/                         # Docker deployment configs
-├── README.md                       # Project documentation
-└── LICENSE                         # MIT License
-
+└── frontend/
+    ├── Dockerfile
+    ├── package.json
+    ├── vite.config.ts
+    ├── tailwind.config.js
+    ├── env.sh
+    └── src/
+        ├── App.tsx
+        ├── main.tsx
+        ├── components/
+        │   ├── FlowGraph.tsx   # React Flow visualization
+        │   ├── ChaosBar.tsx    # Chaos injection UI
+        │   ├── Copilot.tsx     # AI Assistant UI
+        │   ├── Inspector.tsx   # Node details inspector
+        │   └── VixGauge.tsx    # Risk meter component
+        ├── hooks/
+        │   └── useAegis.ts     # Custom hook for API calls
+        ├── store/
+        │   └── chaosStore.ts   # Zustand state management
+        ├── lib/
+        │   ├── api.ts          # Axios configuration
+        │   └── utils.ts        # Helper functions
+        └── data/
+            ├── mock_graph.json # Initial graph state
+            └── red_state.json  # Simulation state
 ```
 
 ---
