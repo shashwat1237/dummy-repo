@@ -89,6 +89,7 @@ def calculate_vix(severity: int, blast_radius: int, time_delta: float = 0.0) -> 
 #  Severity
 * **Definition:** This is a weighted integer representing the magnitude of the specific failure (e.g., the aggregate count of broken columns or fields).
 * **Weighting Factor:** The algorithm intentionally amplifies the impact of the severity metric. [cite_start]It calculates a `weighted_severity` by multiplying the raw input by **1.5** before applying it to the final formula.
+---
 ## ⭐ Key Features
 * 🧠 **End-to-End Data Lineage Visualization**
 * 💥 **Schema Drift Simulation (Chaos Injection)**
