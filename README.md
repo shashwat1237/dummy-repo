@@ -1,6 +1,4 @@
-Here is the clean Markdown file with all citation markers removed:
 
-```markdown
 # 🛡️ Project Aegis
 ### AI Data Resilience & Schema Drift Defense Platform
 
