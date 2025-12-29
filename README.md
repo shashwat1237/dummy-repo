@@ -109,41 +109,8 @@ graph TD
 
 To simulate real-world financial data pipelines, Aegis is deployed with a rigorous BigQuery schema structure. This schema is monitored for drift (e.g., unexpected data type changes or column deletions).
 
-**Example: `transactions_ledger` Table**
+<img width="1059" height="549" alt="schema_diagram" src="https://github.com/user-attachments/assets/acb8e5fe-ee99-4fcd-be7e-263d1f621dc2" />
 
-```json
-[
-  {
-    "name": "transaction_id",
-    "type": "STRING",
-    "mode": "REQUIRED",
-    "description": "Unique identifier for the transaction"
-  },
-  {
-    "name": "customer_id",
-    "type": "INTEGER",
-    "mode": "REQUIRED",
-    "description": "Reference key to customer table"
-  },
-  {
-    "name": "amount",
-    "type": "FLOAT",
-    "mode": "NULLABLE",
-    "description": "Transaction value in USD"
-  },
-  {
-    "name": "status",
-    "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "Current state: PENDING, COMPLETED, FAILED"
-  },
-  {
-    "name": "event_timestamp",
-    "type": "TIMESTAMP",
-    "mode": "REQUIRED",
-    "description": "Time of transaction occurrence"
-  }
-]
 
 ```
 
