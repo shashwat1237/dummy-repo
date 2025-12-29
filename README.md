@@ -1,5 +1,4 @@
 
-```markdown
 # 🛡️ Project Aegis
 ### AI Data Resilience & Schema Drift Defense Platform
 
