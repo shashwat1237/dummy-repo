@@ -1,4 +1,6 @@
+Here is the updated **README.md** file. I have replaced the directory structure with your specific file tree and added the "Schema example used for deployment" section between the Architecture and Project Structure sections as requested.
 
+```markdown
 # 🛡️ Project Aegis
 ### AI Data Resilience & Schema Drift Defense Platform
 
@@ -104,59 +106,120 @@ graph TD
 
 ---
 
+## 🗄️ Schema Example Used for Deployment
+
+To simulate real-world financial data pipelines, Aegis is deployed with a rigorous BigQuery schema structure. This schema is monitored for drift (e.g., unexpected data type changes or column deletions).
+
+**Example: `transactions_ledger` Table**
+
+```json
+[
+  {
+    "name": "transaction_id",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Unique identifier for the transaction"
+  },
+  {
+    "name": "customer_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Reference key to customer table"
+  },
+  {
+    "name": "amount",
+    "type": "FLOAT",
+    "mode": "NULLABLE",
+    "description": "Transaction value in USD"
+  },
+  {
+    "name": "status",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Current state: PENDING, COMPLETED, FAILED"
+  },
+  {
+    "name": "event_timestamp",
+    "type": "TIMESTAMP",
+    "mode": "REQUIRED",
+    "description": "Time of transaction occurrence"
+  }
+]
+
+```
+
+*In the Chaos Simulation, Aegis injects drift by altering these fields (e.g., changing `amount` from FLOAT to STRING) to test system resilience.*
+
+---
+
 ## 📁 Project Structure
 
 ```text
 aegis-platform/
-│
-├── deploy_aegis.sh         # Deployment script
-├── docker-compose.yml      # Local composition config
-├── test_aegis.sh           # Testing script
-├── repair_stuff.py         # Utility script
-├── f1.py                   # Utility script
-├── schema_diagram.png      # Architecture visual
+├── .dockerignore
+├── .gitignore
 ├── README.md
+├── deploy_aegis.sh             # Deployment script
+├── docker-compose.yml          # Container orchestration
+├── f1.py                       # Utility script
+├── repair_stuff.py             # Maintenance script
+├── schema_diagram              # Schema resource files
+├── schema_diagram.png          # Visual schema reference
+├── test_aegis.sh               # Testing suite
 │
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   └── app/
-│       ├── main.py             # App entry point
-│       ├── config.py           # Configuration loading
+│       ├── __init__.py
+│       ├── config.py           # App configuration
+│       ├── main.py             # Application entry point
 │       ├── schemas.py          # Pydantic models
 │       ├── routers/
-│       │   ├── chaos.py        # Chaos engineering routes
-│       │   └── remediate.py    # Remediation routes
+│       │   ├── __init__.py
+│       │   ├── chaos.py        # Chaos engineering endpoints
+│       │   └── remediate.py    # Remediation endpoints
 │       └── services/
-│           ├── ai_agent.py     # AI Copilot logic
-│           ├── bigquery.py     # BQ interaction service
+│           ├── __init__.py
+│           ├── ai_agent.py     # AI logic for patching
+│           ├── bigquery.py     # BigQuery interaction service
 │           └── vix_calc.py     # Data VIX calculation logic
 │
 └── frontend/
     ├── Dockerfile
+    ├── env.sh                  # Environment setup
+    ├── firebase.json           # Firebase hosting config
+    ├── index.html
     ├── package.json
-    ├── vite.config.ts
+    ├── postcss.config.js
     ├── tailwind.config.js
-    ├── env.sh
+    ├── tsconfig.json
+    ├── tsconfig.node.json
+    ├── vite.config.ts
+    ├── public/
+    │   ├── env-config.js
+    │   └── vite.svg
     └── src/
         ├── App.tsx
+        ├── index.css
         ├── main.tsx
         ├── components/
-        │   ├── FlowGraph.tsx   # React Flow visualization
         │   ├── ChaosBar.tsx    # Chaos injection UI
-        │   ├── Copilot.tsx     # AI Assistant UI
-        │   ├── Inspector.tsx   # Node details inspector
-        │   └── VixGauge.tsx    # Risk meter component
+        │   ├── Copilot.tsx     # AI assistant interface
+        │   ├── FlowGraph.tsx   # React Flow lineage graph
+        │   ├── Inspector.tsx   # Schema details view
+        │   └── VixGauge.tsx    # Risk score visualization
+        ├── data/
+        │   ├── mock_graph.json # Demo graph data
+        │   └── red_state.json  # Simulation state data
         ├── hooks/
-        │   └── useAegis.ts     # Custom hook for API calls
-        ├── store/
-        │   └── chaosStore.ts   # Zustand state management
+        │   └── useAegis.ts     # Custom React hooks
         ├── lib/
-        │   ├── api.ts          # Axios configuration
+        │   ├── api.ts          # API connector
         │   └── utils.ts        # Helper functions
-        └── data/
-            ├── mock_graph.json # Initial graph state
-            └── red_state.json  # Simulation state
+        └── store/
+            └── chaosStore.ts   # State management (Zustand)
+
 ```
 
 ---
@@ -166,7 +229,7 @@ aegis-platform/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/DeveshMudaliar1/Aegis-platform.git
+git clone [https://github.com/DeveshMudaliar1/Aegis-platform.git](https://github.com/DeveshMudaliar1/Aegis-platform.git)
 cd Aegis-platform
 
 ```
@@ -178,7 +241,7 @@ cd Aegis-platform
 cd backend
 
 # Run the server (Ensure dependencies are installed)
-uvicorn backend.main:app --reload
+uvicorn app.main:app --reload
 
 ```
 
@@ -221,4 +284,4 @@ Distributed under the **MIT License**.
 
 ```
 
-
+```
