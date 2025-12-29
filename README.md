@@ -156,9 +156,6 @@ aegis-platform/
 ├── README.md
 ├── deploy_aegis.sh             # Deployment script
 ├── docker-compose.yml          # Container orchestration
-├── f1.py                       # Utility script
-├── repair_stuff.py             # Maintenance script
-├── schema_diagram              # Schema resource files
 ├── schema_diagram.png          # Visual schema reference
 ├── test_aegis.sh               # Testing suite
 │
