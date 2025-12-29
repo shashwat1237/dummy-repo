@@ -38,10 +38,10 @@ Aegis treats data pipelines as a **connected graph**, not isolated tables. By mo
 
 ---
 
-## 1. Data VIX Score
+# 1. Data VIX Score
 The **Data VIX** is a composite volatility score designed to translate technical schema failures into a single financial risk metric ranging from **0.0 to 100.0**. It serves as a "Check Engine Light" for enterprise data infrastructure
 
-### The Formula
+# The Formula
 The score is calculated using the following equation:
 
 $$
@@ -53,7 +53,7 @@ $$
     * **12.5:** Normal operational noise / Healthy state
     * **99.0+:** Systemic Fleet Failure
 
-### Implementation (Python)
+# Implementation (Python)
 As defined in `backend/app/services/vix_calc.py`:
 
 ```python
