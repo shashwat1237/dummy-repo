@@ -1,4 +1,3 @@
-Here is the updated **README.md** file. I have replaced the directory structure with your specific file tree and added the "Schema example used for deployment" section between the Architecture and Project Structure sections as requested.
 
 ```markdown
 # 🛡️ Project Aegis
