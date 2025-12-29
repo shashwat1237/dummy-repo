@@ -38,6 +38,40 @@ Aegis treats data pipelines as a **connected graph**, not isolated tables. By mo
 
 ---
 
+## 1. Data VIX Score
+[cite_start]The **Data VIX** is a composite volatility score designed to translate technical schema failures into a single financial risk metric ranging from **0.0 to 100.0**. [cite_start]It serves as a "Check Engine Light" for enterprise data infrastructure[cite: 137].
+
+### The Formula
+The score is calculated using the following equation:
+
+$$
+VIX = \frac{(\text{Severity} \times 1.5) \times \text{Blast Radius}}{\text{Safe Time}} \times 100.0
+$$
+
+* [cite_start]**Range:** The final result is clamped between **0.0** (Healthy) and **100.0** (Systemic Failure).
+* **Thresholds:**
+    * [cite_start]**12.5:** Normal operational noise / Healthy state[cite: 182].
+    * [cite_start]**99.0+:** Systemic Fleet Failure[cite: 168].
+
+### Implementation (Python)
+As defined in `backend/app/services/vix_calc.py`:
+
+```python
+def calculate_vix(severity: int, blast_radius: int, time_delta: float = 0.0) -> float:
+    try:
+        # Defensive Math: ZeroDivisionError protection
+        safe_time = max(float(time_delta), 1.0)
+        
+        # Severity is weighted by a factor of 1.5
+        weighted_severity = float(severity) * 1.5
+        
+        # Raw Calculation
+        raw_score = (weighted_severity * float(blast_radius)) / safe_time * 100.0
+        
+        # Clamping result between 0.0 and 100.0
+        return min(max(round(raw_score, 1), 0.0), 100.0)
+    except Exception:
+        return 50.0
 ## ⭐ Key Features
 * 🧠 **End-to-End Data Lineage Visualization**
 * 💥 **Schema Drift Simulation (Chaos Injection)**
