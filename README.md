@@ -48,7 +48,7 @@ $$
 VIX = \frac{(\text{Severity} \times 1.5) \times \text{Blast Radius}}{\text{Safe Time}} \times 100.0
 $$
 
-* [cite_start]**Range:** The final result is clamped between **0.0** (Healthy) and **100.0** (Systemic Failure).
+* **Range:** The final result is clamped between **0.0** (Healthy) and **100.0** (Systemic Failure).
 * **Thresholds:**
     * **12.5:** Normal operational noise / Healthy state
     * **99.0+:** Systemic Fleet Failure
@@ -73,12 +73,12 @@ def calculate_vix(severity: int, blast_radius: int, time_delta: float = 0.0) -> 
     except Exception:
         return 50.0
 ```
-## 1. Blast Radius
+#  Blast Radius
 * **Definition:** This represents the scope of the damage across the infrastructure.
 * **Metric:** It is defined as the **count of affected downstream nodes**. For example, this measures how many distinct dashboards, data warehouses, or AI models are impacted by the initial break.
 * **Input Type:** In the code, it is passed as an integer input to the calculation logic
 
-## 2. Time Delta (Safe Time)
+#  Time Delta (Safe Time)
 ***Definition:** This parameter represents the time factor or duration of the chaos event.
 * **Mathematical Role:** In the calculation, it acts as a **divisor**, meaning shorter durations (sudden shocks) can result in higher volatility scores.
 * **Defensive Logic:** To prevent "Division by Zero" errors, the code applies a defensive check to ensure the value is never less than 1.0:
@@ -86,7 +86,7 @@ def calculate_vix(severity: int, blast_radius: int, time_delta: float = 0.0) -> 
     safe_time = max(float(time_delta), 1.0)
     ```
 
-## 3. Severity
+#  Severity
 * **Definition:** This is a weighted integer representing the magnitude of the specific failure (e.g., the aggregate count of broken columns or fields).
 * **Weighting Factor:** The algorithm intentionally amplifies the impact of the severity metric. [cite_start]It calculates a `weighted_severity` by multiplying the raw input by **1.5** before applying it to the final formula.
 ## ⭐ Key Features
